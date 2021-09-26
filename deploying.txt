@@ -1,0 +1,29 @@
+(firstly install the following dependencies: truffle, openzeppelin-solidity, loom-js, loom-truffle-provider, bn.js, and axios)
+
+
+You can now generate the private key for the oracle by entering the node scripts/gen-key.js oracle/oracle_private_key command.
+
+Similarly, to generate the private key for the caller contract, run node scripts/gen-key.js caller/caller_private_key.
+
+
+Updating the package.json file:
+
+cd oracle && npx truffle migrate --network extdev --reset -all && cd ..
+cd caller && npx truffle migrate --network extdev --reset -all && cd ..
+
+or in package.json
+"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy:oracle": "cd oracle && npx truffle migrate --network extdev --reset -all && cd ..",
+    "deploy:caller": "cd caller && npx truffle migrate --network extdev --reset -all && cd ..",
+    "deploy:all": "npm run deploy:oracle && npm run deploy:caller"
+  },
+  
+  
+  and then: 
+   npm run deploy:all
+   
+   
+   then:
+   (node EthPriceOracle.js was already started on server so)
+   node Client.js.
